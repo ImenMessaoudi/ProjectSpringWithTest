@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+     tools{
+    	    maven "M2_HOME"
+
+        }
+    	environment {
+    	        PATH = "$PATH:/usr/share/maven/bin"
+    	    }
+
+    stages {
+        stage('Build') {
+            steps {
+                git branch: 'main', url: 'https://github.com/ImenMessaoudi/ProjectSpringWithTest.git'
+                sh './mvnw clean compile'
+                //bat '.\mvnw clean compile'
+            }
+        }
+
+
+         stage('Test') {
+            steps {
+
+                sh './mvnw test'
+                //bat '.\mvnw test'
+            }
+        }
+
+        post{
+            always{
+                junit '**/target/test-classes/TEST-*.xml'
+            }
+        }
+    }
+}
