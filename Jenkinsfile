@@ -27,10 +27,6 @@ pipeline {
             }
         }
 
-        post{
-            always{
-                junit '**/target/test-classes/TEST-*.xml'
-            }
-        }
+      
     }
 }
