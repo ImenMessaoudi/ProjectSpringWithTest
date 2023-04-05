@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'main', url: 'https://github.com/ImenMessaoudi/ProjectSpringWithTest.git'
-                sh './mvnw clean compile'
+                sh """ mvn clean """
                 //bat '.\mvnw clean compile'
             }
         }
