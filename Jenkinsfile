@@ -1,13 +1,9 @@
 pipeline {
     agent any
 
-     tools{
-    	    maven "M2_HOME"
-
-        }
-    	environment {
-    	        PATH = "$PATH:/usr/share/maven/bin"
-    	    }
+     environment {
+		PATH =  "/opt/apache-maven-3.5.4/bin/:$PATH"
+	}
 
     stages {
         stage('Build') {
